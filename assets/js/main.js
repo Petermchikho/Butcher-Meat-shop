@@ -1,5 +1,20 @@
 (function(){
     "use strict";
+    const header=document.getElementById('header');
+    if (header) {
+        const headerScrolled = () => {
+          if (window.scrollY > 150) {
+            if(header.classList.contains('header-scrolled')===false){
+              header.classList.add('header-scrolled');
+            }
+            
+          } else {
+              header.classList.remove('header-scrolled');           
+          }
+        }
+        window.addEventListener('load', headerScrolled);
+        document.addEventListener('scroll',headerScrolled);
+    }
     const openNav=document.querySelector("#open-nav");
     const closeNav=document.querySelector("#close-nav");
     openNav.addEventListener("click",()=>{
@@ -8,27 +23,19 @@
     closeNav.addEventListener("click",()=>{
         document.querySelector(".mobile-nav").classList.remove("show");
     });
-    const mobileNavs=document.querySelectorAll(".drop-down");
-    mobileNavs.forEach(function(link){
-        link.addEventListener("click",function(event){
-            document.querySelectorAll(".mobile-nav-link-minor").forEach(function(linkRemove){
-                linkRemove.classList.remove("show");
-
-            })
-            if(event.target.parentElement.parentElement.querySelector("ul")){
-                event.target.parentElement.parentElement.querySelector("ul").classList.toggle("show");
-        
+    const mobileNavs=document.querySelectorAll(".mobile-nav-link-main");
+    for(let i=0;i<mobileNavs.length;i++){
+        mobileNavs[i].addEventListener("click",function(){
+            if(this.classList.contains("show")){
+                for(let i=0;i<mobileNavs.length;i++){
+                    mobileNavs[i].classList.remove("show")
+                }
+            }else{
+                for(let i=0;i<mobileNavs.length;i++){
+                    mobileNavs[i].classList.remove("show")
+                }
+                this.classList.add("show")
             }
         })
-    })
-    const mobileNavsI=document.querySelectorAll(".drop-down i");
-    mobileNavsI.forEach(function(link){
-        link.addEventListener("click",function(event){
-            document.querySelectorAll(".mobile-nav-link-minor").forEach(function(linkRemove){
-                linkRemove.classList.remove("show");
-
-            })
-            event.target.parentElement.parentElement.parentElement.querySelector("ul").classList.toggle("show");
-        })
-    })
-})();
+    }
+ })();

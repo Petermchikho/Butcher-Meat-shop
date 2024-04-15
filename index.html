@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
 </head>
 <body>
-    <header>
+    <header id="header" >
         <div class="top-nav">
             <div class="top-nav-left">
 
@@ -177,13 +177,13 @@
                 </div>
                 <div class="mobile-links">
                     <ul class="mobile-nav-links">
-                        <li class="mobile-nav-link-main active">
+                        <li class="mobile-nav-link-main show drop-down-main active">
                             <a href="#"  class="mobile-main-link">HOME
                                 <div class="drop-down">
                                     <i class="bi bi-chevron-down"></i>
                                 </div>
                             </a>
-                            <ul class="mobile-nav-link-minor show">
+                            <ul class="mobile-nav-link-minor">
                                 <li><a href="" >HOME ONE</a></li>
                                 <li><a href="">HOME TWO</a></li>
                                 <li><a href="">HOME THREE</a></li>
@@ -194,7 +194,7 @@
                                 
                             </a>
                         </li>
-                        <li class="mobile-nav-link-main">
+                        <li class="mobile-nav-link-main drop-down-main">
                             <a href="#" class="mobile-main-link">PRODUCTS
                                 <div class="drop-down">
                                     <i class="bi bi-chevron-down"></i>
@@ -206,7 +206,7 @@
                                 <li><a href="">SHOP DETAILS</a></li>
                             </ul>
                         </li>
-                        <li class="mobile-nav-link-main">
+                        <li class="mobile-nav-link-main drop-down-main">
                             <a href="#" class="mobile-main-link">BLOG
                                 <div class="drop-down">
                                     <i class="bi bi-chevron-down"></i>
@@ -217,7 +217,7 @@
                                 <li><a href="">BLOG DETAILS</a></li>
                             </ul>
                         </li>
-                        <li class="mobile-nav-link-main">
+                        <li class="mobile-nav-link-main drop-down-main">
                             <a href="#" class="mobile-main-link">PAGES
                                 <div class="drop-down">
                                     <i class="bi bi-chevron-down"></i>
@@ -273,6 +273,30 @@
     </header>
     <main>
         <div class="hero">
+            <div class="hero-content">
+                <h2>
+                    Fresh Meat
+                </h2>
+                <h6>
+                    Butcher & Meat shop
+                </h6>
+                <a href="">
+                    <button>
+                        ORDER NOW
+                    </button>
+                </a>
+                <img src="assets/images/banner_img.png" alt="banner">
+                
+            </div>
+            <div class="banner-shape-wrap">
+                <img class="object" src="assets/images/banner_shape01.png" data-value="-2" alt="">
+                <img class="object" src="assets/images/banner_shape02.png" data-value="6" alt="">
+                <img class="object" src="assets/images/banner_shape03.png" data-value="4" alt="">
+                <img class="object" src="assets/images/banner_shape04.png" data-value="-6" alt="">
+            </div>
+
+        </div>
+        <div class="dummy">
 
         </div>
 
@@ -281,6 +305,18 @@
 
     </footer>
     <script src="assets/js/main.js"></script>
+    <script>
+        const hero=document.querySelector(".hero");
+        hero.addEventListener("mousemove",parallax);
+        function parallax(e){
+            document.querySelectorAll(".object").forEach(function(move){
+                const moving_value=move.getAttribute("data-value");
+                const x=(e.clientX * moving_value /250);
+                const y=(e.clientY * moving_value /250);
+                move.style.transform="translateX(" + x +"px) translateY(" + y +"px)"
+            })
+        }
+    </script>
     
 </body>
 </html>
